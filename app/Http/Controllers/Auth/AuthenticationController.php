@@ -6,36 +6,33 @@ use App\Models\User;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\Api\ApiResponse;
-use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests\RegisterRequest;
+use App\Http\Service\Authentication\AuthenticationService;
 use GuzzleHttp\Psr7\Request;
 
 class AuthenticationController extends Controller
 {
-    public function register( RegisterRequest $registerRequest) 
+
+ protected $authenticationService;
+
+    public function __construct( AuthenticationService $authenticationService)
+    { 
+        $this->authenticationService = $authenticationService ; 
+    }
+    public function register( RegisterRequest $registerRequest , AuthenticationService $authenticationService) 
 
     {
-        $data = $registerRequest->validated() ;  // contains all the 3 keys after the validation 
-        $new_user = User::create($data) ; 
-        $data['token']= $new_user->createToken('ApiToken')->plainTextToken ;
-        $data['name']= $new_user->name ;
-        $data['email']= $new_user->email ;
-
+        $data = $this->authenticationService->register($registerRequest) ;
         if($data) 
         {
             return  $this->ApiResponse($data , 'User Created Successfully' , 200 ) ;
         }
     }
 
-    public function login( LoginRequest $loginRequest) 
-    {
-         if(Auth::attempt( [ 'email' => $loginRequest->email , 'password' => $loginRequest->password]))
-         {
-            $user = Auth::user() ;
-            $data['token']= $user->createToken('ApiToken')->plainTextToken ;
-            $data['name']= $user->name ;
-            $data['email']= $user->email ;
-         }
+    public function login( LoginRequest $loginRequest , AuthenticationService $authenticationService) 
+    {   
+        $data = $this->authenticationService->login($loginRequest) ; 
          if($data) 
          { 
             return $this->apiResponse($data, 'User Logged In Successfully' , 200 ) ; 
