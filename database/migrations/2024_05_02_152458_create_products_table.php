@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('donations', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('description'); 
             $table->string('title'); 
-            $table->string('charity_name'); 
             $table->string('location'); 
             $table->string('location_details'); 
             $table->string('image'); 
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete("set null");
+            $table->string('story')->nullable() ;
+            $table->enum('status' , ['pending','accepting','rejecting'])->default('pending') ;
+            $table->integer('price'); 
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete("cascade");
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('donations');
+        Schema::dropIfExists('products');
     }
 };

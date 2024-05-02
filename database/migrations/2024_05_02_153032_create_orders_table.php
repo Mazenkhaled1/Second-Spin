@@ -18,8 +18,8 @@ return new class extends Migration
             $table->decimal('total_price' , 10 , 2 ); 
             $table->enum('payment_method' , ['cash' , 'credit card '])->default('cash');
             $table->string('location_details');
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete("set null");
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->timestamps();
         });
     }

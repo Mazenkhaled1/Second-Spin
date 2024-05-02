@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('product_orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('order_id')->unsigned()->nullable();
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete("set null");
-            $table->bigInteger('product_id')->unsigned()->nullable()->unique();
-            $table->foreign('product_id')->references('id')->on('products')->onDelete("set null");
+            $table->bigInteger('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete("cascade");
+            $table->bigInteger('product_id')->unsigned()->unique();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete("cascade");
             $table->timestamps();
         });
     }
