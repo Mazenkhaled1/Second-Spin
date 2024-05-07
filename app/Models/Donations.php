@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Donations extends Model
 {
     use HasFactory;
+    protected $fillable = [ 
+        'title',
+        'description',
+        'location', 
+        'location_details',
+        'image',
+        'charity_name',
+        'user_id'
+        
+    ] ; 
 }

@@ -37,6 +37,7 @@ class AuthenticationController extends Controller
          { 
             return $this->apiResponse($data, 'User Logged In Successfully' , 200 ) ; 
          }
+         return $this->apiResponse([], 'User Not Found' , 401 ) ; 
     }
 
     public function logout( Request $request ) 

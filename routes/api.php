@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\Products\AllProductsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,9 @@ Route::prefix('auth')->controller(AuthenticationController::class)->group(functi
     Route::post('/logout' , 'logout')->middleware('auth:sanctum') ;
 
 });
+
+Route::prefix('products')->controller(AllProductsController::class)->group(function() {
+    Route::post('search' , 'search');
+    Route::post('home' , 'home');
+    Route::post('showDetails/{id}' , 'showDetails');
+ }) ;
