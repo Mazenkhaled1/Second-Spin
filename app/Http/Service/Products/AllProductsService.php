@@ -8,6 +8,6 @@ class AllProductsService
 {
     public function index() 
     {
-       return  Product::get()->where('status','accepting') ; 
+       return  Product::status()->get() ; 
     }
 }

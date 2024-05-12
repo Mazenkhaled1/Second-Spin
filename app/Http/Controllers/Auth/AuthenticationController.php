@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Traits\Api\ApiResponse;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Service\Authentication\AuthenticationService;
 
 
@@ -47,5 +47,20 @@ class AuthenticationController extends Controller
         return $this->apiResponse( 'User Logged Out Successfully' , 200) ;
 
     }
+
+    public function resetPass(ResetPasswordRequest  $resetPasswordRequest)
+    {   
+    
+    $user = auth()->user()->email; 
+    if(!$user) {   
+        return $this->apiResponse([] , 'Email Not Found' , 404) ;
+    }
+    dd($resetPasswordRequest->input('password')) ;
+
+    
+    }
+
+    // checks email exists or not 
+    // if exists 
 
 }

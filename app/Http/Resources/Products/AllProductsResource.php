@@ -14,13 +14,14 @@ class AllProductsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            
             'id'          => $this->id,
             'title'        => $this->title,
             'image'       => $this->image,
             'price'    => $this->price,
             'location'    => $this->location,
             'created_at'    => $this->created_at,
-            'category'    => new CategoryResource($this->category),
+            'category'    => $this->category->name,
         ];
     }
 }

@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 // namespace App\Http\Traits\Api;
 
 // use Illuminate\Support\Facades\Storage;
@@ -23,4 +23,4 @@
 //             Storage::delete($storagePath);
 //         }
 //     }
-// }
+// } 

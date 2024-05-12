@@ -19,7 +19,6 @@ class Product extends Model
         'status',
         'category_id',
         'user_id'
-        
     ] ; 
   
     public function user() 
@@ -34,7 +33,15 @@ class Product extends Model
 
     public static function scopeSearch($query,$word){
         $query->where('title','like','%'.$word.'%')
-        ->orWhere('description','like','%'.$word.'%');
+              ->orWhere('description','like','%'.$word.'%');
 
     }
+
+
+    public function scopeStatus($query)
+    {
+         $query->where('status','accepting') ;
+    }
 }
+
+

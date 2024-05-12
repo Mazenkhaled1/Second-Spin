@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Products;
-
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Products\AllProductsResource;
 use App\Http\Resources\Products\ProductDetailsResource;
 use App\Http\Service\Products\AllProductsService;
-use App\Http\Traits\Api\ApiResponse;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -22,13 +20,14 @@ class AllProductsController extends Controller
     public function home()
     {
         $products = $this->allProductsService->index();
+        if($products)
         return $this->apiResponse(AllProductsResource::collection($products), 'Products retrieved Successfully' , 200) ;
     }
 
     public function search(Request $request){
-        $word=$request->input('search') ?? null;
-        $product=Product::search($word)->get();
 
+        $word = $request->input('search') ?? null;
+        $product = Product::search($word)->get();
         if(count($product)>0){
             return $this->apiResponse(AllProductsResource::collection($product), 'Search Done Successfully' , 200) ;
         }
@@ -41,9 +40,8 @@ class AllProductsController extends Controller
        if($product){
            return $this->apiResponse(new ProductDetailsResource($product),'Product Details Retrieved' ,200);
        }
-       else{
            return $this->apiResponse([],'Product Not Found',401);
-       }
+    
    }
     
 }

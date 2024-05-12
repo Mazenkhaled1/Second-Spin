@@ -26,11 +26,12 @@ Route::prefix('auth')->controller(AuthenticationController::class)->group(functi
     Route::post('/register' , 'register') ;
     Route::post('/login' , 'login') ;
     Route::post('/logout' , 'logout')->middleware('auth:sanctum') ;
+    Route::post('/resetPass' , 'resetPass')->middleware('auth:sanctum') ;
 
 });
 
 Route::prefix('products')->controller(AllProductsController::class)->group(function() {
     Route::post('search' , 'search');
-    Route::post('home' , 'home');
-    Route::post('showDetails/{id}' , 'showDetails');
+    Route::get('home' , 'home');
+    Route::get('showDetails/{id}' , 'showDetails');
  }) ;
