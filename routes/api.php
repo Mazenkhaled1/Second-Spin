@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticationController;
-use App\Http\Controllers\Donations\MakeDonationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\Products\AllProductsController;
+use App\Http\Controllers\Products\ProductFillController;
+use App\Http\Controllers\Donations\MakeDonationController;
 
 
 /*
@@ -43,3 +45,4 @@ Route::prefix('products')->middleware('auth:sanctum')->group(function() {
 
 // ganna
 
+// mazen 
