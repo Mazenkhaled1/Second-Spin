@@ -18,7 +18,7 @@ class AllProductsService
     public function store(ProductRequest $request , $id)
     {
         $data = $request->validated() ; 
-        $user = auth()->user() ; // current user 
+        $user = auth()->user() ;
         $data['user_id']  = $user->id  ; 
         $category = Category::find($id) ; 
         $data['category_id'] = $category->id ; 

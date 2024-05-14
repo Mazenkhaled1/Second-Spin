@@ -5,8 +5,6 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Service\Donations\MakeDonationService;
 use App\Http\Requests\Donations\MakeDonationRequest;
-use App\Models\Charity;
-
 class MakeDonationController extends Controller
 {
     protected $makeDonationService;
@@ -22,7 +20,7 @@ class MakeDonationController extends Controller
         if($record){
             return $this->apiResponseStored($record);
         }
-            return $this->apiResponseStored([]);
+            return $this->apiResponse([] ,'not found ' , 403) ; 
      
     }
     }

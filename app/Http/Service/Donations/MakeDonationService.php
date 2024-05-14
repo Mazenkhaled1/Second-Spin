@@ -21,8 +21,8 @@ class MakeDonationService
              $data['user_id'] = $request->user()->id;
              $charity=Charity::find($id);
              $data['charity_id'] = $charity->id;
-              $record = Donations::create($data) ; 
-              return $record ;
+             $record = Donations::create($data) ; 
+             return $record ;
          }
         }
 }
