@@ -1,9 +1,10 @@
 <?php
+
+use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\Donations\MakeDonationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AuthenticationController;
-use App\Http\Controllers\Products\AllProductsController;
-use App\Http\Controllers\Products\ProductFillController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,16 +27,10 @@ Route::prefix('auth')->controller(AuthenticationController::class)->group(functi
     Route::post('/register' , 'register') ;
     Route::post('/login' , 'login') ;
     Route::post('/logout' , 'logout')->middleware('auth:sanctum') ;
-
-
 });
 
 
 
-Route::prefix('products')->middleware('auth:sanctum')->group(function() {
-    Route::post('search' , [AllProductsController::class,'search']);
-    Route::get('home' , [AllProductsController::class,'home']);
-    Route::get('showDetails/{id}' , [AllProductsController::class , 'showDetails']);
-    Route::post('store/{id}' , ProductFillController::class );  
-});
-
+ Route::prefix('donations')->controller(MakeDonationController::class)->group(function() {
+     Route::post('store/{id}' , 'store')->middleware('auth:sanctum') ;
+ }) ;
