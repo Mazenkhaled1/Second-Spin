@@ -38,10 +38,13 @@ class AllProductsController extends Controller
     public function showDetails($id){
         $product=Product::find($id);
        if($product){
-           return $this->apiResponse(new ProductDetailsResource($product),'Product Details Retrieved' ,200);
+           return $this->apiResponseShow(new ProductDetailsResource($product));
        }
            return $this->apiResponse([],'Product Not Found',401);
     
    }
+
+
+
     
 }
