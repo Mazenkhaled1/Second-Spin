@@ -1,5 +1,11 @@
 <?php
 
+<<<<<<< Updated upstream
+=======
+use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\Donations\MakeDonationController;
+use App\Http\Controllers\Products\AllProductsController;
+>>>>>>> Stashed changes
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticationController;
@@ -31,6 +37,7 @@ Route::prefix('auth')->controller(AuthenticationController::class)->group(functi
 
 });
 
+<<<<<<< Updated upstream
 
 Route::prefix('products')->middleware('auth:sanctum')->group(function() {
     Route::post('search' , [AllProductsController::class,'search']);
@@ -38,3 +45,15 @@ Route::prefix('products')->middleware('auth:sanctum')->group(function() {
     Route::get('showDetails/{id}' , [AllProductsController::class , 'showDetails']);
     Route::post('store/{id}' , ProductFillController::class );  
 });
+=======
+Route::prefix('products')->controller(AllProductsController::class)->group(function() {
+    Route::post('search' , 'search');
+    Route::get('home' , 'home');
+    Route::get('showDetails/{id}' , 'showDetails');
+ }) ;
+
+ 
+ Route::prefix('donations')->controller(MakeDonationController::class)->group(function() {
+     Route::post('store/{id}' , 'store')->middleware('auth:sanctum') ;
+ }) ;
+>>>>>>> Stashed changes

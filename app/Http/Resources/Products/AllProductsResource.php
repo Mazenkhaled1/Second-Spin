@@ -20,8 +20,6 @@ class AllProductsResource extends JsonResource
             'image'       => $this->image,
             'price'    => $this->price,
             'location'    => $this->location,
-            'created_at'    => $this->created_at,
-            'category'    => $this->category->name,
         ];
     }
 }

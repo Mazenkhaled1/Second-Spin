@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('description'); 
             $table->string('title'); 
-            $table->string('charity_name'); 
             $table->string('location'); 
             $table->string('location_details'); 
             $table->string('image'); 

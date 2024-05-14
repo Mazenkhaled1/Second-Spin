@@ -14,8 +14,7 @@ class Donations extends Model
         'location', 
         'location_details',
         'image',
-        'charity_name',
-        'user_id'
-        
+        'charity_id',
+        'user_id',
     ] ; 
 }
