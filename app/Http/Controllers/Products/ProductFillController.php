@@ -23,8 +23,8 @@ class ProductFillController extends Controller
     {
         $data = $this->allProductsService->store($request , $id) ; 
         if($data) 
-        { 
+        
                 return $this->apiResponseStored(new ProductDetailsResource($data)) ; 
-        }
+        
     }
 }
