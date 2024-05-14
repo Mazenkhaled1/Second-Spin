@@ -33,9 +33,6 @@ Route::prefix('auth')->controller(AuthenticationController::class)->group(functi
 
 
 
- Route::prefix('donations')->controller(MakeDonationController::class)->group(function() {
-     Route::post('store/{id}' , 'store')->middleware('auth:sanctum') ;
- }) ;
 Route::prefix('products')->middleware('auth:sanctum')->group(function() {
     Route::post('search' , [AllProductsController::class,'search']);
     Route::get('home' , [AllProductsController::class,'home']);
@@ -43,6 +40,12 @@ Route::prefix('products')->middleware('auth:sanctum')->group(function() {
     Route::post('store/{id}' , ProductFillController::class );  
 });
 
-// ganna
 
-// mazen 
+
+
+
+Route::prefix('donations')->controller(MakeDonationController::class)->group(function() {
+    Route::post('store/{id}' , 'store')->middleware('auth:sanctum') ;
+}) ;
+
+// mazen2 
