@@ -45,13 +45,15 @@ Route::prefix('products')->middleware('auth:sanctum')->group(function() {
 
 
 
-Route::prefix('donations')->controller(MakeDonationController::class)->group(function() {
+Route::prefix('donations')->middleware('auth:sanctum')->controller(MakeDonationController::class)->group(function() {
     Route::post('store/{id}' , 'store')->middleware('auth:sanctum') ;
 }) ;
 
 
 
-Route::prefix('categories')->controller(CategroyController::class)->group(function () {
+Route::prefix('categories')->middleware('auth:sanctum')->controller(CategroyController::class)->group(function () {
 
-    Route::get('/' , 'getAllCategories');
+    Route::get('/used' , 'getAllUsedCategories');
+    Route::get('/recycle' , 'getAllRecycleCategory');
+    Route::post('/product/{categoryId}' , 'products');
 });
