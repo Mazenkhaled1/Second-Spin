@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\Categories\CategroyController;
 use App\Http\Controllers\Products\AllProductsController;
 use App\Http\Controllers\Products\ProductFillController;
 use App\Http\Controllers\Donations\MakeDonationController;
@@ -48,4 +49,9 @@ Route::prefix('donations')->controller(MakeDonationController::class)->group(fun
     Route::post('store/{id}' , 'store')->middleware('auth:sanctum') ;
 }) ;
 
-// mazen2 
+
+
+Route::prefix('categories')->controller(CategroyController::class)->group(function () {
+
+    Route::get('/' , 'getAllCategories');
+});
