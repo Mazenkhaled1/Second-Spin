@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\str;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\Products\ProductRequest;
 
 class AllProductsService
 {

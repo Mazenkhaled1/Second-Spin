@@ -5,6 +5,8 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Service\Donations\MakeDonationService;
 use App\Http\Requests\Donations\MakeDonationRequest;
+use App\Http\Resources\Donations\DonationResource;
+
 class MakeDonationController extends Controller
 {
     protected $makeDonationService;
@@ -18,7 +20,7 @@ class MakeDonationController extends Controller
     {
         $record = $this->makeDonationService->store($request , $user,$id);
         if($record){
-            return $this->apiResponseStored($record); // we need to make resourec 
+            return $this->apiResponseStored(new DonationResource($record)); 
         }
             return $this->apiResponse([] ,'not found ' , 403) ; 
      

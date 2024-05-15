@@ -7,7 +7,7 @@ use App\Http\Controllers\Categories\CategroyController;
 use App\Http\Controllers\Products\AllProductsController;
 use App\Http\Controllers\Products\ProductFillController;
 use App\Http\Controllers\Donations\MakeDonationController;
-
+use App\Http\Controllers\UserProfile\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ Route::prefix('products')->middleware('auth:sanctum')->group(function() {
 
 
 Route::prefix('donations')->middleware('auth:sanctum')->controller(MakeDonationController::class)->group(function() {
-    Route::post('store/{id}' , 'store')->middleware('auth:sanctum') ;
+    Route::post('store/{id}' , 'store') ;
 }) ;
 
 
@@ -57,3 +57,11 @@ Route::prefix('categories')->middleware('auth:sanctum')->controller(CategroyCont
     Route::get('/recycle' , 'getAllRecycleCategory');
     Route::post('/product/{categoryId}' , 'products');
 });
+
+
+Route::prefix('userprofile')->middleware('auth:sanctum')->controller(UserProfileController::class)->group(function() {
+    Route::post('uploadimage' , 'UploadImage') ;
+    Route::post('feedback' , 'MakeFeedback') ;
+    Route::post('editprofile/{id}' , 'EditProfile') ;
+    Route::post('/deleteprofile/{id}' , 'destroy') ;
+}) ;

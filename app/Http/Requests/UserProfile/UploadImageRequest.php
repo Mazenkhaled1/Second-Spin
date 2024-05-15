@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\UserProfile;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
 
-class ResetPasswordRequest extends FormRequest
+class UploadImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +22,9 @@ class ResetPasswordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'password' => ['required',Password::min(8)->mixedCase()->numbers()->symbols()]
+            
+            'image'   => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048 ',
+          
         ];
     }
 }

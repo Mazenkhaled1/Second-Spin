@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\UserProfile;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class RegisterRequest extends FormRequest
+class EditProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,10 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|min:3|max:20' ,
-            'email'=> 'required|email|unique:users,email' ,
-            'password'=> ['required',Password::min(8)->mixedCase()->numbers()->symbols()] 
+            // 'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048 ',
+            'name' => 'min:3|max:20' ,
+            'email'=> 'email|unique:users,email' ,
+            'password'=> [Password::min(8)->mixedCase()->numbers()->symbols()] ,
         ];
     }
 }

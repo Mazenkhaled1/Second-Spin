@@ -3,9 +3,9 @@
 namespace App\Http\Service\Authentication;
 
 use App\Models\User;
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Authentication\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\Authentication\RegisterRequest;
 use GuzzleHttp\Psr7\Request;
 
 class AuthenticationService
