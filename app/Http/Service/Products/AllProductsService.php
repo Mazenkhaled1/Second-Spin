@@ -12,7 +12,7 @@ class AllProductsService
 {
     public function index() 
     {
-       return  Product::status()->get() ; 
+       return  Product::status()->whereNot('category_id' , '1')->get() ; 
     }
 
     public function store(ProductRequest $request , $id)
