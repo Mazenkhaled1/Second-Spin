@@ -23,10 +23,10 @@ class EditProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048 ',
             'name' => 'min:3|max:20' ,
             'email'=> 'email|unique:users,email' ,
             'password'=> [Password::min(8)->mixedCase()->numbers()->symbols()] ,
+            'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048 ',
         ];
     }
 }

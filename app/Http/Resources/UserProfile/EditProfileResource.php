@@ -19,6 +19,7 @@ class EditProfileResource extends JsonResource
             'name'     => $this->name,
             'email'     => $this->email,
             'password'     => $this->password,
+            'image'     => $this->image,
             
         ];
     }
