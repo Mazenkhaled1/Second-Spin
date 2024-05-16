@@ -17,6 +17,7 @@ class FeedbackResource extends JsonResource
             
             'id'          => $this->id,
             'comment'       => $this->comment,
+            // 'user_id' => 
         ];
     }
 }

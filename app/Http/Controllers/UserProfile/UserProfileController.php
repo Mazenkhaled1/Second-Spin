@@ -36,6 +36,7 @@ class UserProfileController extends Controller
         $data = $request->validated() ;
         $user = auth()->user() ;
         $data['user_id']  = $user->id  ; 
+
         $data=FeedBack::create($data);
         if($data){
             return $this->apiResponseStored((new FeedbackResource($data)));
@@ -44,10 +45,10 @@ class UserProfileController extends Controller
 
      public function EditProfile(EditProfileRequest $request, $id)
      {
-             $record = $this->editProfileService->update($request, $id);
-             if ($record) {
-                return $this->apiResponseUpdated((new EditProfileResource($record)));
-             }
+            $record = $this->editProfileService->update($request, $id);
+            if ($record) 
+                 return $this->apiResponseUpdated((new EditProfileResource($record)));
+             
      }
 
 
@@ -55,7 +56,7 @@ class UserProfileController extends Controller
     {
             $record = User::FindOrFail($id);
             $record->delete();
-                return $this->apiResponseDeleted() ;
+            return $this->apiResponseDeleted() ;
              
     }
 }
