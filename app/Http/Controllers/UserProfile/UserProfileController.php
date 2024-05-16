@@ -10,7 +10,7 @@ use App\Http\Resources\UserProfile\FeedbackResource;
 use App\Http\Service\UserProfile\UserProfileService;
 use App\Models\FeedBack;
 use App\Models\User;
-
+use GuzzleHttp\Psr7\Request;
 
 class UserProfileController extends Controller
 {
@@ -33,7 +33,6 @@ class UserProfileController extends Controller
         $data = $request->validated() ;
         $user = auth()->user() ;
         $data['user_id']  = $user->id  ; 
-
         $data=FeedBack::create($data);
         if($data){
             return $this->apiResponseStored((new FeedbackResource($data)));
@@ -49,8 +48,9 @@ class UserProfileController extends Controller
      }
 
 
-     public function destroy($id)
-    {
+     public function destroy( Request $request , $id)
+    {       
+            //  $user = auth()->user()->id;  
             $record = User::FindOrFail($id);
             $record->delete();
             return $this->apiResponseDeleted() ;

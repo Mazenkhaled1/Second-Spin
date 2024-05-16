@@ -15,9 +15,14 @@ class UserProfileService
 
     public function update(EditProfileRequest $request,$id)
     { 
+        dd($request->name) ;
+        $user = auth()->user()->id; 
         $data = $request->validated();
         $record = User::FindOrFail($id);
-        $record->update($data);
+        if($user == $request->id)
+        {
+            $record->update($data); 
+        }
         return $record;
     }
 

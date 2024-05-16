@@ -24,6 +24,7 @@ class ProductDetailsResource extends JsonResource
             'location'      => $this->location,
             'location_details'    => $this->location_details,
             'category'      => $this->category->name,
+            'user'          => $this->user_id , 
         ];
     }
 }

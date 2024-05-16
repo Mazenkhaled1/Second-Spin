@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Authentication\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Authentication\RegisterRequest;
-use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Service\Authentication\AuthenticationService;
 
 
