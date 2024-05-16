@@ -10,7 +10,7 @@ use App\Http\Resources\UserProfile\FeedbackResource;
 use App\Http\Service\UserProfile\UserProfileService;
 use App\Models\FeedBack;
 use App\Models\User;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
 {
@@ -20,9 +20,9 @@ class UserProfileController extends Controller
          $this->userProfileService = $userProfileService;
  
      }
-     public function UploadImage(UploadImageRequest $request , User $user)
+     public function UploadImage(UploadImageRequest $request )
      {
-         $record = $this->userProfileService->store($request , $user);
+         $record = $this->userProfileService->store($request);
          if ($record) {
             return $this->apiResponseStored(($record));
          }
@@ -48,13 +48,15 @@ class UserProfileController extends Controller
      }
 
 
-     public function destroy( Request $request , $id)
+     public function destroy(Request $request, $id)
     {       
-            //  $user = auth()->user()->id;  
-            $record = User::FindOrFail($id);
-            $record->delete();
-            return $this->apiResponseDeleted() ;
-             
+             $user = auth()->user()->id;   
+             $record = User::FindOrFail($id);
+             if($user == $request->id)
+             {
+                $record->delete();
+                return $this->apiResponseDeleted() ;
+             }  
     }
 }
     

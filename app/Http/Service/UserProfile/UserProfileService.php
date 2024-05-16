@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Storage;
 
 
 
+
 class UserProfileService
 {
 
     public function update(EditProfileRequest $request,$id)
     { 
-        dd($request->name) ;
+        // dd($request->name) ;
         $user = auth()->user()->id; 
         $data = $request->validated();
         $record = User::FindOrFail($id);
@@ -26,13 +27,12 @@ class UserProfileService
         return $record;
     }
 
-    public function store(UploadImageRequest $request , User $user)
+    public function store(UploadImageRequest $request )
 { 
      $data = $request->validated() ;
      $imageName = str::random(32) . "." . $request->image->getClientOriginalExtension();
-     Storage::disk('public')->put($imageName, file_get_contents($request->image));
+      Storage::disk('public')->put($imageName, file_get_contents($request->image));
      $data['image'] = $imageName ;
-    //  $data['user_id'] = $request->user()->id;
      $record = User::create($data) ;
      return $record ;
  
