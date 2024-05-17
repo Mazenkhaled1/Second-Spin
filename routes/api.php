@@ -7,6 +7,7 @@ use App\Http\Controllers\Categories\CategroyController;
 use App\Http\Controllers\Products\AllProductsController;
 use App\Http\Controllers\Products\ProductFillController;
 use App\Http\Controllers\Donations\MakeDonationController;
+use App\Http\Controllers\Favorites\FavoriteController;
 use App\Http\Controllers\UserProfile\UserProfileController;
 
 /*
@@ -65,4 +66,11 @@ Route::prefix('userprofile')->middleware('auth:sanctum')->controller(UserProfile
     Route::post('feedback' , 'MakeFeedback') ;
     Route::post('editprofile/{id}' , 'EditProfile') ;
     Route::post('/deleteprofile/{id}' , 'destroy') ;
+}) ;
+
+
+Route::prefix('favorites')->middleware('auth:sanctum')->controller(FavoriteController::class)->group(function() {
+    Route::get('favoritelist' , 'index') ;
+    Route::post('store/{id}' , 'store') ;
+    Route::post('delete/{id}' , 'destroy') ;
 }) ;
