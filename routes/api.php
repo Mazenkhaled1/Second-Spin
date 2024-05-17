@@ -47,6 +47,7 @@ Route::prefix('products')->middleware('auth:sanctum')->group(function() {
 
 Route::prefix('donations')->middleware('auth:sanctum')->controller(MakeDonationController::class)->group(function() {
     Route::post('store/{id}' , 'store') ;
+    Route::get('charities' , 'getCharities') ;
 }) ;
 
 
