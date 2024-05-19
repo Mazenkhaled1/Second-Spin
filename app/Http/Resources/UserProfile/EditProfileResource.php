@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class EditProfileResource extends JsonResource
 {
-      /**
+        /**
      * Transform the resource into an array.
      *
      */
@@ -15,11 +15,11 @@ class EditProfileResource extends JsonResource
     {
         return [
             
-            'id'     => $this->id,
+            'id'       => $this->id,
             'name'     => $this->name,
-            'email'     => $this->email,
-            'password'     => $this->password,
-            'image'     => $this->image,
+            'email'    => $this->email,
+            'password' => $this->password,
+            'image'    => $this->image,
             
         ];
     }

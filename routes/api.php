@@ -64,8 +64,8 @@ Route::prefix('categories')->middleware('auth:sanctum')->controller(CategroyCont
 Route::prefix('userprofile')->middleware('auth:sanctum')->controller(UserProfileController::class)->group(function() {
     Route::post('uploadimage' , 'UploadImage') ;
     Route::post('feedback' , 'MakeFeedback') ;
-    Route::post('editprofile/{id}' , 'EditProfile') ;
-    Route::post('/deleteprofile/{id}' , 'destroy') ;
+    Route::post('editprofile' , 'EditProfile');
+    Route::post('/deleteprofile', 'destroy') ;
 }) ;
 
 

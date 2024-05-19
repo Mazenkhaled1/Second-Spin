@@ -3,44 +3,32 @@
 namespace App\Http\Service\UserProfile;
 
 use App\Http\Requests\UserProfile\EditProfileRequest;
+use App\Http\Traits\Api\UploadMedia;
 use App\Models\User;
 use App\Http\Requests\UserProfile\UploadImageRequest;
 use Illuminate\Support\str;
 use Illuminate\Support\Facades\Storage;
 
-
-
-
 class UserProfileService
 {
+    use UploadMedia;
 
-    public function update(EditProfileRequest $request,$id)
-    { 
-        // dd($request->name) ;
-        $user = auth()->user()->id; 
+    public function update(EditProfileRequest $request)
+    {
+        $user = auth()->user();
         $data = $request->validated();
-        $record = User::FindOrFail($id);
-        if($user == $request->id)
-        {
-            $record->update($data); 
-        }
-        return $record;
+        $user->update($data);
+        return $user;
     }
 
-    public function store(UploadImageRequest $request )
-{ 
-     $data = $request->validated() ;
-     $imageName = str::random(32) . "." . $request->image->getClientOriginalExtension();
-      Storage::disk('public')->put($imageName, file_get_contents($request->image));
-     $data['image'] = $imageName ;
-     $record = User::create($data) ;
-     return $record ;
- 
+    public function store(UploadImageRequest $request)
+    {
+        $data = $request->validated();
+        $user = auth()->user();
+        if (isset($data['image'])) {
+            $data['image'] = $this->updateMedia($data['image'], 'images', $user->image);
+        }
+        $record = $user->update($data);
+        return $record;
+    }
 }
-
-}
-
-
-
-
-

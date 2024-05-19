@@ -39,24 +39,21 @@ class UserProfileController extends Controller
         }
      }
 
-     public function EditProfile(EditProfileRequest $request, $id)
-     {
-            $record = $this->userProfileService->update($request, $id);
-            if ($record) 
-                 return $this->apiResponseUpdated((new EditProfileResource($record)));
-             
-     }
+    public function EditProfile(EditProfileRequest $request)
+    {
+        $record = $this->userProfileService->update($request);
+        if ($record)
+            return $this->apiResponseUpdated((new EditProfileResource($record)));
+    }
 
 
-     public function destroy(Request $request, $id)
+     public function destroy()
     {       
-             $user = auth()->user()->id;   
-             $record = User::FindOrFail($id);
-             if($user == $request->id)
-             {
-                $record->delete();
-                return $this->apiResponseDeleted() ;
-             }  
+        $user = auth()->user();
+        if ($user) {
+            $user->delete();
+            return $this->apiResponseDeleted();
+        }
     }
 }
     
