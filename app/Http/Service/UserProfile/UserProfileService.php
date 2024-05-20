@@ -4,11 +4,7 @@ namespace App\Http\Service\UserProfile;
 
 use App\Http\Requests\UserProfile\EditProfileRequest;
 use App\Http\Traits\Api\UploadMedia;
-use App\Models\User;
 use App\Http\Requests\UserProfile\UploadImageRequest;
-use Illuminate\Support\str;
-use Illuminate\Support\Facades\Storage;
-
 class UserProfileService
 {
     use UploadMedia;

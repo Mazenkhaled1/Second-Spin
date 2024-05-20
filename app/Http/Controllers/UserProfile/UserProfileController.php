@@ -10,7 +10,6 @@ use App\Http\Resources\UserProfile\FeedbackResource;
 use App\Http\Service\UserProfile\UserProfileService;
 use App\Models\FeedBack;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class UserProfileController extends Controller
 {
