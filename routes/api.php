@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Categories\CategroyController;
 use App\Http\Controllers\Products\AllProductsController;
 use App\Http\Controllers\Products\ProductFillController;
@@ -74,3 +75,12 @@ Route::prefix('favorites')->middleware('auth:sanctum')->controller(FavoriteContr
     Route::post('store/{id}' , 'store') ;
     Route::post('delete/{id}' , 'destroy') ;
 }) ;
+
+
+Route::prefix('carts')->middleware('auth:sanctum')->controller(CartController::class)->group(function() {
+    Route::get('cartlist' , 'index') ;
+    Route::post('store/{id}' , 'store') ;
+    Route::post('delete/{id}' , 'destroy') ;
+}) ;
+
+

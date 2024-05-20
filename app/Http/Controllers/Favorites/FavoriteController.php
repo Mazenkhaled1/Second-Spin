@@ -46,8 +46,8 @@ class FavoriteController extends Controller
        $favorite = Favorite::find($id);
      if ($favorite->user_id !== $user->id) {
         return $this->apiResponse([],'UnAuthorized',401);
-     }
-     $favorite->delete();
+    }
+    $favorite->delete();
      return $this->apiResponseDeleted();
 }
 
