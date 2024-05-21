@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Cart;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
-use App\Http\Service\Cart\CartService;
 use App\Http\Resources\Cart\CartResource;
 use App\Http\Requests\Cart\StoreCartRequest;
-use App\Http\Resources\Cart\StroeCartResource;
+use App\Http\Resources\Cart\AddToCartResource;
+
 
 
 
@@ -42,7 +42,7 @@ class CartController extends Controller
         $rec =   Cart::create($data) ;
         if($rec) 
         {
-            return $this->apiResponseStored($rec) ;
+            return $this->apiResponseStored(new AddToCartResource($rec)) ;
         }
     }
 

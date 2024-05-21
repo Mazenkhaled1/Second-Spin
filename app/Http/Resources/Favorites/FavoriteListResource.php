@@ -18,7 +18,7 @@ class FavoriteListResource extends JsonResource
             'price'      => $this->product->price,
             'location'      => $this->product->location,
             'image'      => $this->product->image,
-            'product_id'      => $this->product->id,
+            // 'product_id'      => $this->product->id,
         ];
     }
 }

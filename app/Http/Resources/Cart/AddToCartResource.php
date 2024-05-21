@@ -5,7 +5,7 @@ namespace App\Http\Resources\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CartResource extends JsonResource
+class AddToCartResource extends JsonResource
 {
           /**
      * Transform the resource into an array.
@@ -16,12 +16,10 @@ class CartResource extends JsonResource
     {
         return 
         [
+            'id'            => $this->id,
+            'product_id'   => $this->product_id,
             'title'      => $this->product->title,
-            'price'      => $this->product->price,
-            'location'   => $this->product->location,
-            'image'      => $this->product->image,
-            // 'product_id' => $this->product->id,
-            // 'user_id'    => $this->user_id 
+            'user_id'   => $this->user_id,
         ] ;
     }
 }

@@ -16,6 +16,7 @@ class AddFavoriteResource extends JsonResource
         return [
             'id'            => $this->id,
             'product_id'   => $this->product_id,
+            'title'      => $this->product->title,
             'user_id'   => $this->user_id,
         ];
     }
