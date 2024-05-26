@@ -9,6 +9,7 @@ use App\Http\Controllers\Products\AllProductsController;
 use App\Http\Controllers\Products\ProductFillController;
 use App\Http\Controllers\Donations\MakeDonationController;
 use App\Http\Controllers\Favorites\FavoriteController;
+use App\Http\Controllers\Orders\OrdersController;
 use App\Http\Controllers\UserProfile\UserProfileController;
 
 /*
@@ -81,6 +82,10 @@ Route::prefix('carts')->middleware('auth:sanctum')->controller(CartController::c
     Route::get('cartlist' , 'index') ;
     Route::post('store/{id}' , 'store') ;
     Route::post('delete/{id}' , 'destroy') ;
+}) ;
+
+Route::prefix('orders')->middleware('auth:sanctum')->controller(OrdersController::class)->group(function() {
+    Route::get('checkout' , 'checkout') ;
 }) ;
 
 

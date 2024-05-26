@@ -18,7 +18,7 @@ class CartController extends Controller
     public function index() 
     {   
         $user = auth()->user() ;
-        $data = Cart::get();
+        $data = Cart::get()->where('user_id', $user->id);
         if($user) {
             return $this->apiResponse(CartResource::collection($data) , 'Cart retrieved successfully ' , 200 ) ;
         }

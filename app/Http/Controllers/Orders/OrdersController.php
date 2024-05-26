@@ -8,14 +8,16 @@ use App\Models\Cart;
 
 class OrdersController extends Controller
 {
-    public function index()
+    public function checkout()
     {
+        // $data=$request->validated();
+        $user = auth()->user() ;
+    $carts=Cart::where('user_id', $user->id)->with('product')->get();
+    foreach($carts as $cart){
+        $product_price=$cart->product->id;
+    }
+    dd($product_price);
      
     }
 
-    public function store(OrdersRequest $request)
-    {
-        $data   = $request->validated() ;
-       
-    }
 }

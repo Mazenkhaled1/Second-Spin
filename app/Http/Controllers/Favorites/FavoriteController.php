@@ -21,7 +21,7 @@ class FavoriteController extends Controller
 
      public function index(){
         $user = auth()->user() ;
-        $favorites = Favorite::get(); 
+        $favorites = Favorite::get()->where('user_id', $user->id); 
         if ($user) {
             return $this->apiResponse(FavoriteListResource::collection($favorites),'favorites List Retrieved Successfully');
         }

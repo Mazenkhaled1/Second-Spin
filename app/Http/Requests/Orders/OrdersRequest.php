@@ -23,7 +23,7 @@ class OrdersRequest extends FormRequest
     {
         return [
            
-            'payment_method'    => 'required|in:cash,card ', 
+            'payment_method'    => 'required|in:cash,credit card ', 
             'location_details' => 'required|min:10|max:255|',
 
         ];

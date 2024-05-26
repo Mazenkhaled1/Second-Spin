@@ -29,6 +29,10 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
+    public function Cart()
+    {
+        return $this->hasMany(Cart::class);
+    }
 
     public static function scopeSearch($query,$word){
         $query->where('title','like','%'.$word.'%')
