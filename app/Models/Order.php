@@ -16,4 +16,10 @@ class Order extends Model
         'location_details',
         'user_id',
     ];
+
+    public function user() 
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
