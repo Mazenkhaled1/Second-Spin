@@ -85,7 +85,7 @@ Route::prefix('carts')->middleware('auth:sanctum')->controller(CartController::c
 }) ;
 
 Route::prefix('orders')->middleware('auth:sanctum')->controller(OrdersController::class)->group(function() {
-    Route::get('checkout' , 'checkout') ;
+    Route::post('checkout' , 'checkout') ;
 }) ;
 
 
