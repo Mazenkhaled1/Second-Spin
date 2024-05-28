@@ -13,6 +13,7 @@ class Order extends Model
         'delivery_fees',
         'total_price',
         'payment_method',
+        'location',
         'location_details',
         'user_id',
     ];

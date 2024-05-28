@@ -23,13 +23,12 @@ class ProductRequest extends FormRequest
     {
         return [
             'description' => 'required|min:10|max:255|',
-            'title'       => 'required|min:10|max:255|',
-            'location'    => 'required|in:alexandria,aswan,dakahlia,fayoum,cairo,beheria,asyut,beni suef,gharbia,demietta,giza ', 
+            'title'       => 'required|min:5|max:255|',
+            'location'    => 'required|in:alexandria,aswan,dakahlia,fayoum,cairo,beheria,asyut,beni suef,gharbia,demietta,giza', 
             'location_details' => 'required|min:10|max:255|',
             'image' => 'required|mimes:png,jpeg,jpg,gif,svg|max:2048',
-            'story'  => 'required|min:10|max:255|',
+            'story'  => 'nullable|min:10|max:255|',
             'price' => 'required|numeric|gt:0',
-         
         ];
     }
 }

@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('charities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('image');
+            $table->string('name');    
             $table->timestamps();
         });
     }

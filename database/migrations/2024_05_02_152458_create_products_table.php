@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image'); 
             $table->string('story')->nullable() ;
             $table->enum('status' , ['pending','accepting','rejecting'])->default('pending') ;
-            $table->integer('price'); // decimal 
+            $table->decimal('price');  
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->bigInteger('category_id')->unsigned();
