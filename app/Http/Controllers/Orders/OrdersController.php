@@ -18,9 +18,9 @@ class OrdersController extends Controller
     $carts = Cart::where('user_id', $user->id)->with('product')->get();
     
     $product_price = []  ; 
-    $cart_id = []  ; 
+    
     foreach($carts as $cart){
-       $cart_id[]= $cart->id;
+    //    $cart_id[]= $cart->id;
         if($cart->product){
 
             $product_price[] = $cart->product->price;
@@ -28,7 +28,7 @@ class OrdersController extends Controller
         }
     }
 
-    dd($cart_id);
+    
     $total=MathHelper::sum($product_price);
     $data['total']=$total;
 
