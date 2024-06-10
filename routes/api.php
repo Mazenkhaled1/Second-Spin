@@ -38,7 +38,7 @@ Route::prefix('auth')->controller(AuthenticationController::class)->group(functi
 
 
 Route::prefix('products')->middleware('auth:sanctum')->group(function() {
-    Route::post('search' , [AllProductsController::class,'search']);
+    Route::get('search' , [AllProductsController::class,'search']);
     Route::get('home' , [AllProductsController::class,'home']);
     Route::get('showDetails/{id}' , [AllProductsController::class , 'showDetails']);
     Route::post('store/{id}' , ProductFillController::class );  
@@ -59,7 +59,7 @@ Route::prefix('categories')->middleware('auth:sanctum')->controller(CategroyCont
 
     Route::get('/used' , 'getAllUsedCategories');
     Route::get('/recycle' , 'getAllRecycleCategory');
-    Route::post('/product/{categoryId}' , 'products');
+    Route::get('/product/{categoryId}' , 'products');
 });
 
 

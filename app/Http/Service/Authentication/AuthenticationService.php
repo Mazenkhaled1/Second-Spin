@@ -30,8 +30,9 @@ class AuthenticationService
             $data['token']= $user->createToken('ApiToken')->plainTextToken ;
             $data['name']= $user->name ;
             $data['email']= $user->email ;
+            return $data ;
          } 
-         return $data ; 
+          
      }
 
     
