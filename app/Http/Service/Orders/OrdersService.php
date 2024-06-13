@@ -8,6 +8,9 @@ use App\Http\Traits\Api\MathHelper;
 use App\Http\Requests\Orders\OrdersRequest;
 use App\Http\Requests\Orders\CreditCardRequest;
 
+use Illuminate\Support\Facades\DB;
+
+
 class OrdersService
 {
     
@@ -46,13 +49,19 @@ class OrdersService
 
             
             $insertOrder = Order::create($data) ;
+          
+            Cart::where('user_id', $user->id)->delete();
+            DB::commit();
             return $insertOrder;
             }
             elseif($paymentMethod == 'credit card') { 
                  $data['card_number'] = $creditCardRequest->input('card_number') ;
              
                 $insertOrder = Order::create($data) ;
+                Cart::where('user_id', $user->id)->delete();
+                DB::commit();
                 return $insertOrder;
+                
         }
 
            
