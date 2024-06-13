@@ -87,10 +87,6 @@ Route::prefix('carts')->middleware('auth:sanctum')->controller(CartController::c
 
 Route::prefix('orders')->middleware('auth:sanctum')->controller(OrdersController::class)->group(function() {
     Route::post('checkout' , 'checkout') ;
-}) ;
-
-
-Route::middleware('auth:sanctum')->controller(PaymentController::class)->group(function() {
-    Route::post('payment' , 'payment') ;
+    Route::post('paymentSummary' , 'paymentSummary') ;
 }) ;
 

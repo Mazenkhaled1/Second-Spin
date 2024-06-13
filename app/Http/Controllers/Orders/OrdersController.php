@@ -24,6 +24,11 @@ class OrdersController extends Controller
         
                 return $this->apiResponseStored(new OrderResource($data)) ; 
     }
+
+    public function paymentSummary() 
+    { 
+        
+    }
    
 
 }

@@ -21,6 +21,7 @@ class UserProfileService
     {
         $data = $request->validated();
         $user = auth()->user();
+  dd($user) ;
         if (isset($data['image'])) {
             $data['image'] = $this->updateMedia($data['image'], 'images', $user->image);
         }

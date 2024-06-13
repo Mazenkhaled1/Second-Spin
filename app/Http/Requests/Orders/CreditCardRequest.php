@@ -31,7 +31,6 @@ class CreditCardRequest extends FormRequest
                 if (count($parts) != 2) {
                     return $fail('The ' . $attribute . ' is invalid.');
                 }
-
                 $month = (int) $parts[0];
                 $year = (int) (strlen($parts[1]) == 2 ? '20' . $parts[1] : $parts[1]);
                 $currentYear = (int) date('Y');
