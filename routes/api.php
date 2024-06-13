@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Orders\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticationController;
@@ -88,4 +89,8 @@ Route::prefix('orders')->middleware('auth:sanctum')->controller(OrdersController
     Route::post('checkout' , 'checkout') ;
 }) ;
 
+
+Route::middleware('auth:sanctum')->controller(PaymentController::class)->group(function() {
+    Route::post('payment' , 'payment') ;
+}) ;
 

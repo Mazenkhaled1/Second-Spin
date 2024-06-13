@@ -16,6 +16,7 @@ class Order extends Model
         'location',
         'location_details',
         'user_id',
+        'card_number' ,
     ];
 
     public function user() 
