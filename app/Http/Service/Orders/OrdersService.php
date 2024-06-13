@@ -60,12 +60,4 @@ class OrdersService
         }
     }
 
-
-    public function paymentSummary()  
-    {
-        $user = auth()->user() ; 
-        $paymentSummary = Order::where('user_id' , $user)->get() ; 
-
-        
-    }
 }
