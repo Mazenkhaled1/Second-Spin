@@ -17,6 +17,8 @@ class Order extends Model
         'location_details',
         'user_id',
         'card_number' ,
+        'expiry_date',
+        'cvv',
     ];
 
     public function user() 
