@@ -23,7 +23,7 @@ class OrdersRequest extends FormRequest
     {
         return [
            
-            'payment_method'   => 'required|in:cash,credit_card',
+            'payment_method'   => 'required|in:cash,credit card',
             'location'         => 'required|in:alexandria,aswan,dakahlia,fayoum,cairo,beheria,asyut,beni suef,gharbia,demietta,giza',
             'location_details' => 'required|min:10|max:255|',
 

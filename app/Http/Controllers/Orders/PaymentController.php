@@ -25,7 +25,7 @@ class PaymentController extends Controller
         }
 
 
-        elseif($paymentMethod == 'credit_card')
+        elseif($paymentMethod == 'credit card')
         {
             $request = $creditCardRequest->validated() ; 
             dd($request) ; 

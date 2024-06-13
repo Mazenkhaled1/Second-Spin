@@ -46,15 +46,16 @@ class OrdersService
 
             
             $insertOrder = Order::create($data) ;
+            return $insertOrder;
             }
-            elseif($paymentMethod == 'credit_card') { 
-                $data['card_number'] = $creditCardRequest->input('card_number') ;
+            elseif($paymentMethod == 'credit card') { 
+                 $data['card_number'] = $creditCardRequest->input('card_number') ;
              
                 $insertOrder = Order::create($data) ;
-
+                return $insertOrder;
         }
 
-            return $insertOrder;
+           
        
     }
 
