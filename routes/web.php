@@ -10,7 +10,6 @@ use App\Http\Controllers\Admin\Dashboard\Feedback\FeedbackDashboardController;
 use App\Http\Controllers\Admin\Dashboard\Order\OrderDashboardController;
 use App\Http\Controllers\Admin\Dashboard\Product\ProductDashboardController;
 use App\Http\Controllers\Admin\Dashboard\Charity\CharityDashboardController;
-use App\Http\Controllers\Admin\Dashboard\Product\AcceptedProductsDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +29,7 @@ Route::get('/', function () {
 Route::post('/', [AdminAuthController::class, 'login'])->name('admin.login');
 
 // done 
+Route::middleware(['admin'])->group(function () {
 Route::prefix('dashboard')->controller(AdminDashboardController::class)->group(function(){
     Route::get('/' , 'index')->name('admin.index'); 
     Route::get('newAdmin/create' , 'create')->name('admin.create') ; 
@@ -83,4 +83,6 @@ Route::prefix('dashboard/category')->controller(CategoryDashboardController::cla
     Route::post('newCategory/store' , 'store')->name('category.store') ; 
     Route::delete('category/destroy/{category}' , 'destroy')->name('category.destroy') ; 
 
+});
+Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });

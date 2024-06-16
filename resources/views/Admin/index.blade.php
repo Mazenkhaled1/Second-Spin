@@ -61,7 +61,6 @@
         @endforeach
         <a href = "{{route('admin.create')}}" class = "btn btn-success">Add</a>
         
-
       </tbody>
     </table>
   </div>
