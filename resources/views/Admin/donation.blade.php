@@ -1,7 +1,7 @@
 @extends('Admin.inc.master')
 
 
-@section('title','Requests')
+@section('title','Donations')
 
 
 @section('content')
@@ -11,12 +11,12 @@
     <div class = "container-fluid">
     <div class = "row mb-2">
     <div class = "col-sm-6">
-    <h1  class = "m-0">Requests</h1>
+    <h1  class = "m-0">Donations</h1>
           </div><!-- /.col -->
           <div class = "col-sm-6">
           <ol  class = "breadcrumb float-sm-right">
           <li  class = "breadcrumb-item"><a href = "#">Home</a></li>
-          <li  class = "breadcrumb-item active">Dashboard v1</li>
+          <li  class = "breadcrumb-item active">Dashboard v2</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,12 +26,12 @@
   
     <!-- Main content -->
 
-    {{-- <div   class = "card-body">
+    <div   class = "card-body">
       @if(session()->has('deleted'))
         <div class="alert alert-danger">
           {{session()->get("deleted")}}
         </div>
-        @endif --}}
+        @endif
     <table class = "table table-bordered">
         <thead>
           <tr>
@@ -41,38 +41,40 @@
             <th>location</th>
             <th>location_details</th>
             <th>image</th>
-            <th>story</th>
-            <th>status</th>
-            <th>Accept</th>
-            <th>Reject</th>
+            <th>charity_id</th>
+            <th>start shipping</th>
           </tr>
         </thead>
         <tbody>
           
-         
-          @foreach ($productPendings as $productPending )
-            
+          @foreach ( $donations as $donation )
+          
           <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$productPending->description}}</td>
-            <td>{{$productPending->title}}</td>
-            <td>{{$productPending->location}}</td>
-            <td>{{$productPending->location_details}}</td>
+            <td>{{$donation->description}}</td>
+            <td>{{$donation->title}}</td>
+            <td>{{$donation->location}}</td>
+            <td>{{$donation->location_details}}</td>
             <td>
-              @if($productPending->image)
-                  <img src="{{ asset('storage/' . $productPending->image) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
+              @if($donation->image)
+                  <img src="{{ asset('storage/' . $donation->image) }}" alt="donation Image" style="max-width: 100px; max-height: 100px;">
               @else
                   No image available
               @endif
           </td>
-            <td>{{$productPending->story}}</td>
-            <td>{{$productPending->status}}</td>
-            <td><a href = "{{route('product.acceptingProducts' ,$productPending->id)}}" class = "btn btn-success">Accept</a></td>
-            <td><a href = "{{route('product.rejectingProducts' ,$productPending->id)}}" class = "btn btn-danger">Reject</a></td>
-          </tr>
-          @endforeach
+            <td>{{$donation->charity_id}}</td>
+            <td>
+              <form method = 'POST' action = "{{route('doantion.destroy' , $donation->id)}}" >
+                @csrf
+                @method('delete')
+           <button type = "submit" class = "btn btn-success">Start Shipping</button>
+             </form>
+            </td>
   
-
+          </tr>
+  
+  
+          @endforeach
           
   
         </tbody>
@@ -81,4 +83,3 @@
     <!-- /.content -->
   </div>
 @endsection
-

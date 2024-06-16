@@ -7,15 +7,10 @@ use App\Models\Product;
 
 class ProductDashboardController extends Controller
 {
-    public function productsAccepting()
-    {
-    $productAccepted = Product::where('status' , 'accepting')->get() ;
-    return view('Admin.product' , compact('productAccepted')) ;
-    
-    }
+   
     public function productsPendingOrRejecting()
     {
-    $productPendings = Product::where('status' , 'pending')->orWhere('status' , 'rejecting')->get() ;
+    $productPendings = Product::where('status' , 'pending')->get() ;
     return view('Admin.request_to_sell' , compact('productPendings'));
     }
 
@@ -26,14 +21,46 @@ class ProductDashboardController extends Controller
             return redirect()->back()->with('error', 'Product not found.');
         }
 
-        if($product->status == 'pending' ||$product->status == 'rejecting' )
+        if($product->status == 'pending' )
         {
-          $product->update(['status' , 'accepting']) ;
+            $product->update(['status' => 'accepting']);
             return redirect()->back()->with('success', 'Product status updated to accepting.');
         }
 
-        return redirect()->back()->with('error', 'Product status is not pending or rejecting.');
+        return redirect()->back()->with('error', 'Product status is not pending.');
+    }
 
+    
+    public function rejectingProducts($id) 
+    { 
+        $product = Product::find($id) ;
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found.');
+        }
+
+        if($product->status == 'pending' )
+        {
+            $product->update(['status' => 'rejecting']);
+            return redirect()->back()->with('success', 'Product status updated to rejecting.');
+        }
+
+        return redirect()->back()->with('error', 'Product status is not pending.');
+
+    }
+
+    
+    public function productsAccepting()
+    {
+    $productAccepted = Product::where('status' , 'accepting')->get() ;
+    return view('Admin.product' , compact('productAccepted')) ;
+    
+    }
+
+    public function destroy(Product $product) 
+    {
+
+        $product->delete() ;
+        return redirect('dashboard/product/')->with('deleted','Product has been deleted successfully') ; 
     }
 
 

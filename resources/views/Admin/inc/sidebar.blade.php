@@ -13,7 +13,7 @@
           <img src="{{asset('Admin')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Admin</a>
         </div>
       </div>
 
@@ -54,6 +54,24 @@
                 <a href="/dashboard/product/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Products</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dashboard/charity" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Charities</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dashboard/order" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Orders</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/dashboard/donation" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Donations</p>
                 </a>
               </li>
             </ul>

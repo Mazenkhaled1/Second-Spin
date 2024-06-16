@@ -43,6 +43,7 @@
             <th>image</th>
             <th>story</th>
             <th>status</th>
+            <th>remove</th>
           </tr>
         </thead>
         <tbody>
@@ -56,9 +57,22 @@
               <td>{{$Product->title}}</td>
               <td>{{$Product->location}}</td>
               <td>{{$Product->location_details}}</td>
-              <td>{{$Product->image}}</td>
+              <td>
+                @if($Product->image)
+                    <img src="{{ asset('storage/' . $Product->image) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
+                @else
+                    No image available
+                @endif
+            </td>
               <td>{{$Product->story}}</td>
               <td>{{$Product->status}}</td>  
+              <td>
+                <form method = 'POST' action = "{{route('product.destroy' , $Product->id)}}" >
+                  @csrf
+                  @method('delete')
+             <button type = "submit" class = "btn btn-danger">Remove</button>
+               </form>
+              </td>
             </tr>
             @endforeach
   

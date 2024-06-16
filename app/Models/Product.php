@@ -15,6 +15,7 @@ class Product extends Model
         'location_details',
         'image',
         'story',
+        'status',
         'price',
         'category_id',
         'user_id'

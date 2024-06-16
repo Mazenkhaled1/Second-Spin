@@ -1,7 +1,7 @@
 @extends('Admin.inc.master')
 
 
-@section('title','Dashbosard')
+@section('title','Charities')
 
 
 @section('content')
@@ -11,7 +11,7 @@
   <div class = "container-fluid">
   <div class = "row mb-2">
   <div class = "col-sm-6">
-  <h1  class = "m-0">Admins</h1>
+  <h1  class = "m-0">Charities</h1>
         </div><!-- /.col -->
         <div class = "col-sm-6">
         <ol  class = "breadcrumb float-sm-right">
@@ -32,25 +32,23 @@
     </div>
     @endif
 
-    <table class = "table table-bordered">
+  <table class = "table table-bordered">
       <thead>
         <tr>
           <th style = "width: 10px">#</th>
           <th>Name</th>
-          <th>email</th>
-          <th>remove</th>
+          <th>Remove</th>
         </tr>
       </thead>
       <tbody>
         
-        @foreach ( $admins as $admin )
+        @foreach ( $charities as $charity )
         
         <tr>
           <td>{{$loop->iteration}}</td>
-          <td>{{$admin->name}}</td>
-          <td>{{$admin->email}}</td>
+          <td>{{$charity->name}}</td>
           <td>
-            <form method = 'POST' action = "{{route('admin.destroy' , $admin->id)}}" >
+            <form method = 'POST' action = "{{route('charity.destroy' , $charity->id)}}" >
               @csrf
               @method('delete')
          <button type = "submit" class = "btn btn-danger">Remove</button>
@@ -59,7 +57,7 @@
 
         </tr>
         @endforeach
-        <a href = "{{route('admin.create')}}" class = "btn btn-success">Add</a>
+        <a href = "{{route('charity.create')}}" class = "btn btn-success">Add</a>
         
 
       </tbody>
