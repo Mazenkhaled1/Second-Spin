@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Dashboard\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Http\Request;
+
 
 class ProductDashboardController extends Controller
 {
@@ -64,5 +66,11 @@ class ProductDashboardController extends Controller
     }
 
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $productAccepted = Product::search($search)->get();
 
+        return view('admin.product', compact('productAccepted'));
+    }
 }

@@ -39,5 +39,13 @@ class CharityDashboardController extends Controller
         return redirect('dashboard/charity/')->with('deleted','Charity has been deleted successfully') ; 
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $charities = Charity::search($search)->get();
+
+        return view('admin.charity', compact('charities'));
+    }
+
 
 }

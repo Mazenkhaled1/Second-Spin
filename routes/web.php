@@ -43,7 +43,7 @@ Route::prefix('dashboard')->controller(AdminDashboardController::class)->group(f
 Route::prefix('dashboard/user')->controller(UserDashboardController::class)->group(function(){
     Route::get('/' , 'index'); 
     Route::delete('user/destroy/{user}' , 'destroy')->name('user.destroy') ; 
-
+    Route::get('/users/search', 'search')->name('users.search');
 });
 
 Route::prefix('dashboard/feedback')->controller(FeedbackDashboardController::class)->group(function(){
@@ -58,6 +58,7 @@ Route::prefix('dashboard/product')->controller(ProductDashboardController::class
     Route::get('acceptingProducts/{id}' , 'acceptingProducts')->name('product.acceptingProducts');
     Route::get('rejectingProducts/{id}' , 'rejectingProducts')->name('product.rejectingProducts');
     Route::delete('product/destroy/{product}' , 'destroy')->name('product.destroy') ; 
+    Route::get('/products/search', 'search')->name('products.search');
 });
 
 Route::prefix('dashboard/order')->controller(OrderDashboardController::class)->group(function(){
@@ -75,6 +76,7 @@ Route::prefix('dashboard/charity')->controller(CharityDashboardController::class
     Route::get('newCharity/create' , 'create')->name('charity.create') ; 
     Route::post('newCharity/store' , 'store')->name('charity.store') ; 
     Route::delete('charity/destroy/{charity}' , 'destroy')->name('charity.destroy') ; 
+    Route::get('/charities/search', 'search')->name('charities.search');
 });
 
 Route::prefix('dashboard/category')->controller(CategoryDashboardController::class)->group(function(){

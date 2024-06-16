@@ -20,7 +20,13 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <form action="{{ route('products.search') }}" method="GET">
+        <div class="form-group">
+            <input type="text" name="search" class="form-control" placeholder="Search products...">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
   

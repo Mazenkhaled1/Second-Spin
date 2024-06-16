@@ -53,4 +53,8 @@ class User extends Authenticatable
     return $this->hasMany(Cart::class);
 }
 
+public static function scopeSearch($query,$word){
+    $query->where('name','like','%'.$word.'%');
+}
+
 }

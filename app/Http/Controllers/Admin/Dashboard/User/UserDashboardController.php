@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Dashboard\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserDashboardController extends Controller
 {
@@ -18,6 +19,14 @@ class UserDashboardController extends Controller
         
         $user->delete() ;
         return redirect('dashboard/user/')->with('deleted','user has been deleted successfully') ; 
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $users = User::search($search)->get();
+
+        return view('admin.user', compact('users'));
     }
 
 }

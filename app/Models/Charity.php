@@ -12,4 +12,8 @@ class Charity extends Model
         'name',
         'image',
     ];
+
+    public static function scopeSearch($query,$word){
+        $query->where('name','like','%'.$word.'%');
+    }
 }
