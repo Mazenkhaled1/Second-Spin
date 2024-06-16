@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\Dashboard\AdminDashboardController;
+use App\Http\Controllers\Admin\Dashboard\Category\CategoryDashboardController;
 use App\Http\Controllers\Admin\Dashboard\Donation\DonationDashboardController;
 use App\Http\Controllers\Admin\Dashboard\User\UserDashboardController;
 use App\Http\Controllers\Admin\Dashboard\Feedback\FeedbackDashboardController;
@@ -74,5 +75,12 @@ Route::prefix('dashboard/charity')->controller(CharityDashboardController::class
     Route::get('newCharity/create' , 'create')->name('charity.create') ; 
     Route::post('newCharity/store' , 'store')->name('charity.store') ; 
     Route::delete('charity/destroy/{charity}' , 'destroy')->name('charity.destroy') ; 
+});
+
+Route::prefix('dashboard/category')->controller(CategoryDashboardController::class)->group(function(){
+    Route::get('/' , 'index');
+    Route::get('newCategory/create' , 'create')->name('category.create') ; 
+    Route::post('newCategory/store' , 'store')->name('category.store') ; 
+    Route::delete('category/destroy/{category}' , 'destroy')->name('category.destroy') ; 
 
 });
