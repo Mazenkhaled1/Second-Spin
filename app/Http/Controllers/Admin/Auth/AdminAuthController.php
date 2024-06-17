@@ -19,7 +19,7 @@ class AdminAuthController extends Controller
             
             if(Auth::guard('admin')->attempt( [ 'email' => $request->email , 'password' => $request->password]))
         {
-            dd(2) ;
+           
             return redirect()->intended('home');
           
         } 
