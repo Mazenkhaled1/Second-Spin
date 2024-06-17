@@ -69,6 +69,7 @@ Route::prefix('userprofile')->middleware('auth:sanctum')->controller(UserProfile
     Route::post('feedback' , 'MakeFeedback') ;
     Route::post('editprofile' , 'EditProfile');
     Route::post('/deleteprofile', 'destroy') ;
+    Route::get('/getuser', 'getuser') ;
 }) ;
 
 
