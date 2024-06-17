@@ -11,7 +11,7 @@ body{
 h1{
     text-align: center;
     font-size: 3rem;
-    color: #a60321;
+    color: #7AAB99;
   }
   
   
@@ -54,7 +54,7 @@ h1{
   }
   #submit{
     font-size: 15px;
-    background-color: #a60321;
+    background-color:#7AAB99;
     color: white;
     padding: 1em 4em;
     border-radius: 15px;
