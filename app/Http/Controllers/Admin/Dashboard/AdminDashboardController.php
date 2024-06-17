@@ -11,7 +11,7 @@ class AdminDashboardController extends Controller
     public Function index() 
     {
         $admins = Admin::all() ;
-        return view('Admin.index', compact('admins')) ;
+        return view('Admin.admin', compact('admins')) ;
     }
 
     public Function create() 

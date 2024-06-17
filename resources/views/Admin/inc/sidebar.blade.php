@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/dashboard/" class="brand-link">
+    <a href="/home/" class="brand-link">
       <img src="{{asset('Admin')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin</span>
+      <span class="brand-text font-weight-light">HomePage</span>
     </a>
 
     <!-- Sidebar -->
@@ -32,6 +32,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/dashboard/" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="/dashboard/user/" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>

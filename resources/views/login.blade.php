@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <!-- <link rel="stylesheet" href="./css/index.css"> -->
-    <link rel="stylesheet" href="{{ asset('resources/css/form.css') }}">
+    <link rel="stylesheet" href="{{asset('Login')}}/form.css">
 </head>
 <body>
     
     
   <!------------------------------------form---------------------------------->
 
+  @if($errors->any())
+  <div class="alert alert-danger">
+    <ul>
+      @foreach($errors->all() as $error)
+      <li>{{$error}}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
 
+    
   <div class="formm" methd="POST">
+    
 
     <form action="{{ route('admin.login') }}" method="POST" class="form hide">
         @csrf

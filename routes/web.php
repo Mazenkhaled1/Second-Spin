@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Dashboard\Feedback\FeedbackDashboardController;
 use App\Http\Controllers\Admin\Dashboard\Order\OrderDashboardController;
 use App\Http\Controllers\Admin\Dashboard\Product\ProductDashboardController;
 use App\Http\Controllers\Admin\Dashboard\Charity\CharityDashboardController;
+use App\Http\Controllers\Admin\Dashboard\Home\HomePageDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::post('/', [AdminAuthController::class, 'login'])->name('admin.login');
 
 // done 
 Route::middleware(['admin'])->group(function () {
+    Route::get('home' , [HomePageDashboardController::class , 'index']);
 Route::prefix('dashboard')->controller(AdminDashboardController::class)->group(function(){
     Route::get('/' , 'index')->name('admin.index'); 
     Route::get('newAdmin/create' , 'create')->name('admin.create') ; 
