@@ -2,9 +2,9 @@
     <!-- Brand Logo -->
     <a href="/home/" class="brand-link">
       <img src="{{asset('Admin')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">HomePage</span>
+      <span class="brand-text font-weight-light">HomePage</span>     
     </a>
-
+  
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -94,6 +94,7 @@
           </li>
           <li class="nav-item">
            
+            <a href = "{{route('admin.logout')}}" class = "btn btn-danger">LogOut</a>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

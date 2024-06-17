@@ -28,9 +28,10 @@ Route::get('/', function () {
 });
 
 Route::post('/', [AdminAuthController::class, 'login'])->name('admin.login');
+Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
 // done 
-Route::middleware(['admin'])->group(function () {
+// Route::middleware(['admin'])->group(function () {
     Route::get('home' , [HomePageDashboardController::class , 'index']);
 Route::prefix('dashboard')->controller(AdminDashboardController::class)->group(function(){
     Route::get('/' , 'index')->name('admin.index'); 
@@ -88,5 +89,4 @@ Route::prefix('dashboard/category')->controller(CategoryDashboardController::cla
     Route::delete('category/destroy/{category}' , 'destroy')->name('category.destroy') ; 
 
 });
-Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-});
+// });
