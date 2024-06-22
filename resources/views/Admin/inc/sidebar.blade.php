@@ -14,9 +14,13 @@
         </div> --}}
         <div class="info">
       
-          {{-- <a href="#" class="d-block"> {{ Auth::Admin()->name }}
-    
-          </a> --}}
+          <a class="d-block" >
+            {{ auth()->guard('admin')->user()->name }}
+          </a>
+          <a class="d-block" >
+            {{ auth()->guard('admin')->user()->email }}
+          </a>
+
          
         </div>
       </div>

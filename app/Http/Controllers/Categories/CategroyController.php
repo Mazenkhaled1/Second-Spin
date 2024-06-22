@@ -28,7 +28,8 @@ class CategroyController extends Controller
 
     public function products($categoryId) 
     {
-        $data = Product::where('category_id' , $categoryId)->get() ; 
+        $data = Product::where('category_id' , $categoryId)
+        ->where('status' ,'accepting')->get() ; 
         return $this->apiResponse(AllProductsResource::collection($data) , 'Products retrieved successfully' , 200 ) ; 
 
     }

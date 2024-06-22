@@ -23,7 +23,7 @@ class AdminAuthController extends Controller
             return redirect()->intended('home');
           
         } 
-        return redirect('login')->withErrors('Username or Password not correct');
+        return redirect('/')->withErrors('Username or Password not correct');
          
     }
     public function logout(Request $request)

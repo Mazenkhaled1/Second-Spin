@@ -62,7 +62,7 @@
                   No image available
               @endif
           </td>
-            <td>{{$donation->charity_id}}</td>
+            <td>{{ $donation->charity->name }}</td>
             <td>
               <form method = 'POST' action = "{{route('doantion.destroy' , $donation->id)}}" >
                 @csrf

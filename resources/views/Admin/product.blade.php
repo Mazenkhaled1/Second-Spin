@@ -65,7 +65,7 @@
               <td>{{$Product->location_details}}</td>
               <td>
                 @if($Product->image)
-                    <img src="{{ asset('storage/' . $Product->image) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
+                    <img src="{{ asset(str_replace(['http://secondspin.xyz'], '', $Product->image)) }}" alt="Product Image" style="max-width: 100px; max-height: 100px;">
                 @else
                     No image available
                 @endif

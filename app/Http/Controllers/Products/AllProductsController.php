@@ -25,9 +25,8 @@ class AllProductsController extends Controller
     }
 
     public function search(Request $request){
-
         $word = $request->input('search') ?? null;
-        $product = Product::search($word)->get();
+        $product = Product::search($word)->where('status' , 'accepting')->get();
         if(count($product)>0){
             return $this->apiResponse(AllProductsResource::collection($product), 'Search Done Successfully' , 200) ;
         }

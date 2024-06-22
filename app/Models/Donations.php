@@ -17,4 +17,8 @@ class Donations extends Model
         'charity_id',
         'user_id',
     ] ; 
+    public function charity()
+{
+    return $this->belongsTo(Charity::class);
+}
 }
